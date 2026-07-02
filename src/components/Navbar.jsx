@@ -17,22 +17,24 @@ export default function Navbar({ user, setUser, setView }) {
     };
 
     return (
-        <div style={{ display: "flex", gap: "10px" }}>
+    <div className="navbar">
 
+        <div>
             <button onClick={() => setView("proyectos")}>
-                Ver Proyectos
+                Proyectos
             </button>
 
             {user === "ADMIN" && (
                 <button onClick={() => setView("crear")}>
-                    Crear Proyecto
+                    Crear
                 </button>
             )}
-
-            <button onClick={logout}>
-                Logout
-            </button>
-
         </div>
-    );
+
+        <button onClick={logout}>
+            Logout
+        </button>
+
+    </div>
+);
 }

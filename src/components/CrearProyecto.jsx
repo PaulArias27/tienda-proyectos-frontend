@@ -19,25 +19,29 @@ export default function CrearProyecto() {
 
         } catch (error) {
 
-            if (error.response && error.response.status === 403) {
-                alert("No autorizado (solo ADMIN)");
-            } else {
-                alert("Error al crear proyecto");
+            if (error.response?.status === 403) {
+                alert("⛔ ACCESO DENEGADO: Solo ADMIN puede crear proyectos");
+            } 
+            else if (error.response?.status === 401) {
+                alert("Sesión expirada, vuelva a iniciar sesión");
+            } 
+            else {
+                alert("Error inesperado al crear proyecto");
             }
         }
     };
 
     return (
-        <div>
-            <h2>Crear Proyecto (ADMIN)</h2>
+    <div className="card">
+        <h2>Crear Proyecto</h2>
 
-            <input placeholder="Nombre" onChange={(e) => setNombre(e.target.value)} />
-            <input placeholder="Descripción" onChange={(e) => setDescripcion(e.target.value)} />
-            <input type="date" onChange={(e) => setFechaInicio(e.target.value)} />
+        <input placeholder="Nombre" onChange={(e) => setNombre(e.target.value)} />
+        <input placeholder="Descripción" onChange={(e) => setDescripcion(e.target.value)} />
+        <input type="date" onChange={(e) => setFechaInicio(e.target.value)} />
 
-            <button onClick={guardar}>
-                Guardar
-            </button>
-        </div>
-    );
+        <button className="primary" onClick={guardar}>
+            Guardar
+        </button>
+    </div>
+);
 }

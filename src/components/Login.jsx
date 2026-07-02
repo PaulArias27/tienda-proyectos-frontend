@@ -24,13 +24,23 @@ export default function Login({ setUser }) {
     };
 
     return (
-        <div>
-            <h2>Login</h2>
+    <div className="card">
+        <h2>Iniciar Sesión</h2>
 
-            <input placeholder="Usuario" onChange={(e) => setUsername(e.target.value)} />
-            <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+        <input
+            placeholder="Usuario"
+            onChange={(e) => setUsername(e.target.value)}
+        />
 
-            <button onClick={handleLogin}>Ingresar</button>
-        </div>
-    );
+        <input
+            type="password"
+            placeholder="Contraseña"
+            onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <button className="primary" onClick={handleLogin}>
+            Ingresar
+        </button>
+    </div>
+);
 }
